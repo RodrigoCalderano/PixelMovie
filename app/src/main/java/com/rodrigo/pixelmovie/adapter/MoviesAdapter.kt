@@ -40,8 +40,12 @@ class MoviesAdapter(private val movies: List<Movie>, private val rowLayout: Int,
             title.text = movies[position].title
             release.text = movies[position].releaseDate
             rating.text = movies[position].voteAverage.toString()
+            if (movies[position].voteAverage.toInt() == 0){
+                rating_container.visibility = View.GONE
+                overview.maxLines = 5
+            }
             img.loadUrl(BASE_POSTER_URL + movies[position].posterPath)
-
+            overview.text =  movies[position].overview
 
             setOnClickListener { onClick(movie) }
         }

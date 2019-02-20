@@ -7,22 +7,33 @@
     android:background="@color/colorMovieDbBlack"
     tools:context="com.rodrigo.pixelmovie.activity.MainActivity">
 
-    <FrameLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:id="@+id/frameLayout"
             app:layout_constraintVertical_bias="0.0" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            android:background="@color/colorBlack">
+            android:background="@color/colorBlack"
+            android:orientation="horizontal">
+
         <ImageView
+                android:layout_marginLeft="8dp"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/ic_logo"
-                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_logo"/>
+
+        <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Lançamentos"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textSize="25sp"
         />
 
-    </FrameLayout>
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/movies_recycler_view"
