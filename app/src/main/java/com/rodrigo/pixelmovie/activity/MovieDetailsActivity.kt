@@ -3,6 +3,8 @@ package com.rodrigo.pixelmovie.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ImageView
 import com.rodrigo.pixelmovie.network.ApiClient
 import com.rodrigo.pixelmovie.network.ApiInterface
 import retrofit2.Call
@@ -40,9 +42,15 @@ class MovieDetailsActivity : AppCompatActivity() {
         val call = apiService.getMovieDetails(id, API_KEY)
         call.enqueue(object : Callback<MovieDetail> {
             override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
+                val movie = response.body()!!
                 val teste = response.body()!!.original_title
                 desccc.text = teste
-                appBarImg.loadUrl(BASE_BACKDROP_URL + response.body()!!.backdrop_path)
+
+
+                if (!movie.backdrop_path.isNullOrEmpty()){
+                    appBarImg.loadUrl(BASE_BACKDROP_URL + response.body()!!.backdrop_path)
+                    appBarLogo.visibility = View.GONE
+                }
             }
 
             override fun onFailure(call: Call<MovieDetail>, t: Throwable) {
