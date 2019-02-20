@@ -13,19 +13,26 @@ import com.rodrigo.pixelmovie.model.MovieDetail
 import com.rodrigo.pixelmovie.R
 import com.rodrigo.pixelmovie.extensions.API_KEY
 import com.rodrigo.pixelmovie.extensions.BASE_BACKDROP_URL
-import kotlinx.android.synthetic.main.activity_movie_details.*
+import com.rodrigo.pixelmovie.extensions.setupToolbar
+import kotlinx.android.synthetic.main.activity_details.*
+import kotlinx.android.synthetic.main.details_content.*
 
 
 class MovieDetailsActivity : AppCompatActivity() {
 
     val id : Int by lazy { intent.getIntExtra("movieParam", 0)}
+    val titleReceived : String by lazy { intent.getStringExtra("titleParam")}
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_details)
+        setContentView(R.layout.activity_details)
+        createSetup(savedInstanceState)
+    }
 
-        textView.text = id.toString()
+    private fun createSetup(savedInstanceState: Bundle?) {
 
+        setupToolbar(R.id.toolbarAC, titleReceived)
 
         val apiService = ApiClient.client().create(ApiInterface::class.java)
 
@@ -34,8 +41,8 @@ class MovieDetailsActivity : AppCompatActivity() {
         call.enqueue(object : Callback<MovieDetail> {
             override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
                 val teste = response.body()!!.original_title
-                textView.text = teste
-                imageView.loadUrl(BASE_BACKDROP_URL + response.body()!!.backdrop_path)
+                desccc.text = teste
+                appBarImg.loadUrl(BASE_BACKDROP_URL + response.body()!!.backdrop_path)
             }
 
             override fun onFailure(call: Call<MovieDetail>, t: Throwable) {
