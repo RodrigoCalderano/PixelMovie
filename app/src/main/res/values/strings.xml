@@ -5,5 +5,5 @@
     <string name="movie_release_init">Data de lançamento: </string>
     <string name="movie_release">2019/03/14</string>
     <string name="movie_overview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur vestibulum lectus. In nec eros sit amet est vehicula vestibulum. Sed fringilla justo vel fermentum maximus. Quisque auctor quam quis nibh interdum elementum. Nam sit amet mi vel lacus faucibus commodo porttitor id risus. Cras a turpis tincidunt, vehicula libero id, suscipit ipsum. Ut blandit rutrum risus, quis varius risus fermentum quis.</string>
-
+    <string name="lancamentos">Lançamentos</string>
 </resources>

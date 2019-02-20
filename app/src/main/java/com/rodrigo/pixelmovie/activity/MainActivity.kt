@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import com.rodrigo.pixelmovie.R
 import com.rodrigo.pixelmovie.model.MoviesResponse
 import com.rodrigo.pixelmovie.network.ApiClient
@@ -17,6 +18,7 @@ import com.rodrigo.pixelmovie.extensions.MY_LANGUAGE
 import com.rodrigo.pixelmovie.extensions.MY_REGION
 import com.rodrigo.pixelmovie.model.Movie
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_movie.*
 import org.jetbrains.anko.startActivity
 
 
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MoviesResponse>, response: Response<MoviesResponse>) {
                 val movies = response.body()!!.results
                 movies_recycler_view.adapter = MoviesAdapter(movies, R.layout.item_movie, applicationContext) { onClickMovie(it) }
+                progressUpcoming.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
