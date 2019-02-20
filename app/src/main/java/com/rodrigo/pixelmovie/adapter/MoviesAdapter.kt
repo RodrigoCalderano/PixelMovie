@@ -9,8 +9,12 @@ import android.widget.TextView
 import android.view.View
 import android.widget.LinearLayout
 import com.rodrigo.pixelmovie.R
+import com.rodrigo.pixelmovie.extensions.BASE_BACKDROP_URL
+import com.rodrigo.pixelmovie.extensions.BASE_POSTER_URL
+import com.rodrigo.pixelmovie.extensions.loadUrl
 import com.rodrigo.pixelmovie.model.Movie
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.activity_movie_details.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 
@@ -34,9 +38,10 @@ class MoviesAdapter(private val movies: List<Movie>, private val rowLayout: Int,
 
         with(view){
             title.text = movies[position].title
-            subtitle .text = movies[position].releaseDate
-            description.text = movies[position].overview
+            release.text = movies[position].releaseDate
             rating.text = movies[position].voteAverage.toString()
+            img.loadUrl(BASE_POSTER_URL + movies[position].posterPath)
+
 
             setOnClickListener { onClick(movie) }
         }

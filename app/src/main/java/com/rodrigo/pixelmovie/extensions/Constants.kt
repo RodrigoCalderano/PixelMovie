@@ -6,4 +6,7 @@ const val MY_LANGUAGE = "pt-BR"
 const val MY_REGION = "BR"
 
 const val BASE_URL = "http://api.themoviedb.org/3/"
+const val BASE_BACKDROP_URL = "https://image.tmdb.org/t/p/w780"
+const val BASE_POSTER_URL = "https://image.tmdb.org/t/p/w154"
+
 

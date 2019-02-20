@@ -12,6 +12,7 @@ import com.rodrigo.pixelmovie.extensions.loadUrl
 import com.rodrigo.pixelmovie.model.MovieDetail
 import com.rodrigo.pixelmovie.R
 import com.rodrigo.pixelmovie.extensions.API_KEY
+import com.rodrigo.pixelmovie.extensions.BASE_BACKDROP_URL
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
 
@@ -34,7 +35,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
                 val teste = response.body()!!.original_title
                 textView.text = teste
-                imageView.loadUrl("https://image.tmdb.org/t/p/w780" + response.body()!!.backdrop_path)
+                imageView.loadUrl(BASE_BACKDROP_URL + response.body()!!.backdrop_path)
             }
 
             override fun onFailure(call: Call<MovieDetail>, t: Throwable) {
@@ -42,10 +43,6 @@ class MovieDetailsActivity : AppCompatActivity() {
                 Log.e("tas", t.toString() + "deu ruimmm")
             }
         })
-
-
-
-
     }
 
 }
