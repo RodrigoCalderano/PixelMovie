@@ -18,25 +18,22 @@ import com.rodrigo.pixelmovie.extensions.MY_LANGUAGE
 import com.rodrigo.pixelmovie.extensions.MY_REGION
 import com.rodrigo.pixelmovie.model.Movie
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_movie.*
 import org.jetbrains.anko.startActivity
-
 
 
 class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.java.simpleName
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fetchService()
+        createSetup()
     }
 
-    private fun fetchService(){
+    private fun createSetup(){
         movies_recycler_view.layoutManager = LinearLayoutManager(this)
-        val apiService = ApiClient.client().create(ApiInterface::class.java)
 
+        val apiService = ApiClient.client().create(ApiInterface::class.java)
         val call = apiService.getUpcomingMovies(API_KEY, MY_LANGUAGE, MY_REGION)
         call.enqueue(object : Callback<MoviesResponse> {
             override fun onResponse(call: Call<MoviesResponse>, response: Response<MoviesResponse>) {

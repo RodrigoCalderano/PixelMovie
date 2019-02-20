@@ -13,5 +13,5 @@ interface ApiInterface {
     fun getUpcomingMovies(@Query("api_key") apiKey: String, @Query("language") language: String, @Query("region") region: String): Call<MoviesResponse>
 
     @GET("movie/{id}")
-    fun getMovieDetails(@Path("id") id: Int, @Query("api_key") apiKey: String): Call<MovieDetail>
+    fun getMovieDetails(@Path("id") id: Int, @Query("api_key") apiKey: String, @Query("language") language: String): Call<MovieDetail>
 }
