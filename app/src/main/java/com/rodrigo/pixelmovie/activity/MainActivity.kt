@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickMovie(movie: Movie){
-        Log.e("alou", "movie id: " + movie.id)
         startActivity<MovieDetailsActivity>(
             "movieParam" to movie.id,
             "titleParam" to movie.title

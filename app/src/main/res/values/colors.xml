@@ -8,15 +8,12 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGrey1">#707070</color>
-    <color name="colorGreyDark">#212121</color>
+    <color name="colorGreyDark">#3C3C3C</color>
     <color name="colorGreyLight">#8A8A8A</color>
 
     <color name="colorMovieDbGreen">#35D06F</color>
     <color name="colorMovieDbDarkGreen">#0F2927</color>
     <color name="colorMovieDbBlack">#0F1B21</color>
-
-
-
 
 
 </resources>

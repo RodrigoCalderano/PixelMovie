@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import com.rodrigo.pixelmovie.network.ApiClient
 import com.rodrigo.pixelmovie.network.ApiInterface
 import retrofit2.Call
@@ -16,8 +15,8 @@ import com.rodrigo.pixelmovie.extensions.*
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.details_content.*
 import android.content.Intent
+import android.net.Uri
 import org.jetbrains.anko.toast
-import timber.log.Timber
 
 
 class MovieDetailsActivity : AppCompatActivity() {
@@ -57,24 +56,27 @@ class MovieDetailsActivity : AppCompatActivity() {
             appBarLogo.visibility = View.GONE
         }
 
+        var genres = ""
+        for (each in movieDetailed.genres){ genres += " - "  + each.genreName }
+
+
+        tagline.text = movieDetailed.tagline
+        runtime.text = movieDetailed.runtime.toString()
+        releaseDetail.text = dateFormatter(movieDetailed.releaseDate)
+        voteAverege.text = movieDetailed.voteAverage.toString()
+        budget.text = movieDetailed.budget.toString()
+        revenue.text = movieDetailed.revenue.toString()
+        genresTxt.text = genres
+        overviewDetail.text = movieDetailed.overview
+
+        movieSiteContainer.setOnClickListener { openBrowser(movieDetailed.homepage) }
+        movieImdbContainer.setOnClickListener { openBrowser(BASE_IMDB_URL + movieDetailed.imdb_id) }
         fab.setOnClickListener { onClickShare(movieDetailed) }
 
-        //TODO: Layout do conteudo tela detalhe
-        //TODO: share + icone de share, zap, link, rating
-        //TODO: Tratar erros falta de internet, lista vazia, autorização, conteúdo vazio
-        //TODO: Readme, comentar e otimizar
-
-        println(movieDetailed.budget)
-        println(movieDetailed.genres[0].genreName)
-        println(movieDetailed.homepage)
-        println(movieDetailed.imdb_id)
-        println(movieDetailed.revenue)
-        println(movieDetailed.runtime)
-        println(movieDetailed.budget)
     }
 
 
-    fun onClickShare(movieDetailed: MovieDetail){
+    private fun onClickShare(movieDetailed: MovieDetail){
         val message = "Olá, acabei de ver que " + movieDetailed.title + " lança dia " + dateFormatter(movieDetailed.releaseDate) + ", vamos assistir? =]"
         val whatsappIntent = Intent(Intent.ACTION_SEND)
         whatsappIntent.type = "text/plain"
@@ -84,6 +86,19 @@ class MovieDetailsActivity : AppCompatActivity() {
             startActivity(whatsappIntent)
         } catch (ex: android.content.ActivityNotFoundException) {
             toast("Ops, não consegui compartilhar :/ Será que você tem Whatsapp instalado?")
+        }
+    }
+
+    private fun openBrowser(url: String){
+        if(!url.isNullOrEmpty()){
+            val uris = Uri.parse(url)
+            val intents = Intent(Intent.ACTION_VIEW, uris)
+            val b = Bundle()
+            b.putBoolean("new_window", true)
+            intents.putExtras(b)
+            startActivity(intents)
+        }else{
+            toast("Ops, me parece que esse filme não tem site :/")
         }
     }
 }
