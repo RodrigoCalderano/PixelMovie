@@ -15,6 +15,9 @@ import com.rodrigo.pixelmovie.R
 import com.rodrigo.pixelmovie.extensions.*
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.details_content.*
+import android.content.Intent
+import org.jetbrains.anko.toast
+import timber.log.Timber
 
 
 class MovieDetailsActivity : AppCompatActivity() {
@@ -54,6 +57,8 @@ class MovieDetailsActivity : AppCompatActivity() {
             appBarLogo.visibility = View.GONE
         }
 
+        fab.setOnClickListener { onClickShare(movieDetailed) }
+
         //TODO: Layout do conteudo tela detalhe
         //TODO: share + icone de share, zap, link, rating
         //TODO: Tratar erros falta de internet, lista vazia, autorização, conteúdo vazio
@@ -66,6 +71,20 @@ class MovieDetailsActivity : AppCompatActivity() {
         println(movieDetailed.revenue)
         println(movieDetailed.runtime)
         println(movieDetailed.budget)
+    }
+
+
+    fun onClickShare(movieDetailed: MovieDetail){
+        val message = "Olá, acabei de ver que " + movieDetailed.title + " lança dia " + dateFormatter(movieDetailed.releaseDate) + ", vamos assistir? =]"
+        val whatsappIntent = Intent(Intent.ACTION_SEND)
+        whatsappIntent.type = "text/plain"
+        whatsappIntent.setPackage("com.whatsapp")
+        whatsappIntent.putExtra(Intent.EXTRA_TEXT, message)
+        try {
+            startActivity(whatsappIntent)
+        } catch (ex: android.content.ActivityNotFoundException) {
+            toast("Ops, não consegui compartilhar :/ Será que você tem Whatsapp instalado?")
+        }
     }
 }
 

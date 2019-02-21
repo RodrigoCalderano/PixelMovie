@@ -32,5 +32,7 @@ class MovieDetail(
     @SerializedName("homepage")
     var homepage: String,
     @SerializedName("tagline")
-    var tagline: String
+    var tagline: String,
+    @SerializedName("poster_path")
+    var posterPath: String
 )

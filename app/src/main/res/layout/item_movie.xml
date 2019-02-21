@@ -70,16 +70,26 @@
                         android:layout_centerInParent="true"
                         android:scaleType="centerCrop"
                         android:src="@layout/star"
-                        android:tint="@color/colorAccent" />
+                        android:tint="@color/colorMovieDbGreen" />
+
+                <TextView
+                        android:layout_marginLeft="6dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        android:text="@string/avaliacao" />
 
                 <TextView
                         android:id="@+id/rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorWhite"
-                        android:layout_marginLeft="8dp"
-                        android:textStyle="bold"
-                        android:text="5.0" />
+                        android:layout_marginLeft="6dp"
+                        android:textStyle="bold" />
+
+
+
             </LinearLayout>
 
             <LinearLayout

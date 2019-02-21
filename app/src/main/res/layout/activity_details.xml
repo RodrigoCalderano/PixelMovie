@@ -70,12 +70,13 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
+            android:backgroundTint="@color/colorMovieDbGreen"
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:clickable="true"
-            android:src="@drawable/ic_logo"
+            android:src="@drawable/baseline_share_24"
             android:tint="@color/colorBlack"
             app:layout_anchor="@+id/appbar"
             app:layout_anchorGravity="bottom|right|end" />

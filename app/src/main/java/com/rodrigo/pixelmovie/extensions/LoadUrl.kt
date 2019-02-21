@@ -2,6 +2,7 @@ package com.rodrigo.pixelmovie.extensions
 
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 
 fun ImageView.loadUrl(url: String?) {
     if (url == null || url.trim().isEmpty()) {
@@ -9,12 +10,15 @@ fun ImageView.loadUrl(url: String?) {
         return
     }
 
-        Picasso.with(context).load(url).fit().into(this,
-            object : com.squareup.picasso.Callback {
-                override fun onSuccess() {
-                }
+    Picasso.with(context).load(url).fit().into(this,
+        object : com.squareup.picasso.Callback {
+            override fun onSuccess() {
+            }
 
-                override fun onError() {
-                }
-            })
+            override fun onError() {
+            }
+        })
+
+
     }
+

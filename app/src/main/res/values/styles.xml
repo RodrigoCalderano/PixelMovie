@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorMovieDbBlack</item>
         <item name="colorPrimaryDark">@color/colorMovieDbBlack</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorMovieDbGreen</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
